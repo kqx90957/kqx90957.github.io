@@ -34,7 +34,6 @@
   btn.onclick = async function () {
     btn.setAttribute('disabled', true)
     let re = await axios.get(`https://api.uomg.com/api/rand.img3?&format=json`);
-    console.log(re)
     img.setAttribute('src', re.data.imgurl);
     setTimeout(() => {
       console.log(1)
