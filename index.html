@@ -25,7 +25,6 @@
   <button @click="getimg" class="btn">点我获取图片
   </button>
   <div class="box"> <img alt="点击按钮查看图片" id="img" /></div>
-  </template>
 </body>
 
 <script>
@@ -33,8 +32,15 @@
   let img = document.querySelector('#img');
   let btn = document.querySelector('.btn');
   btn.onclick = async function () {
-    let re = await axios.get(`https://api.uomg.com/api/rand.img3?sort=胖次猫&format=json`);
-    img.setAttribute('src', re.data.imgurl)
+    btn.setAttribute('disabled', true)
+    let re = await axios.get(`https://api.uomg.com/api/rand.img3?&format=json`);
+    console.log(re)
+    img.setAttribute('src', re.data.imgurl);
+    setTimeout(() => {
+      console.log(1)
+      btn.removeAttribute('disabled')
+    }, 1000)
+
   }
 
 
